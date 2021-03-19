@@ -44,6 +44,7 @@ svg path {
 }
 
 .header {
+  position: relative;
   font-family: 'Roboto', sans-serif;
   padding: 24px 0px 25px;
   border-bottom: 1px solid #ECECEC;
@@ -951,12 +952,46 @@ li.social-media {
 
 .modal {
   position: absolute;
-  top: 50%;
+  top: 221px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   width: 528px;
   height: 581px;
   background: var(--white-text);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 }
+
+.modal-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--white-text);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 0;
+  padding: 0;
+}
+
+svg.button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  background-size: contain;
+  width: 18px;
+  height: 18px;
+  fill: var(--black-logo);
+}
+
+.button-svg {
+  display: flex;
+  width: 18px;
+  height: 18px;
