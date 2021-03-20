@@ -8,6 +8,10 @@
   box-sizing: border-box;
 }
 
+*:focus {
+  transition: var(--timeing-function);
+}
+
 :root {
   --black-logo: #000000;
   --black-text: #212121;
@@ -100,6 +104,10 @@ svg path {
   color: var(--black-logo);
 }
 
+.web+.logo:hover {
+  transform: scale(0.75);
+}
+
 .navlink:hover,
 .navlink :focus,
 .navlink.current {
@@ -108,8 +116,22 @@ svg path {
   transition: transform var(--timeing-function);
 }
 
+.navlink:hover,
+.navlink :focus {
+  transform: ;
+}
+
 .navlink.current {
   position: relative;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 250ms;
+}
+
+.navlink {
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 250ms;
 }
 
 .navlink.current .current-link::after {
@@ -155,7 +177,7 @@ svg path {
 .list-item :focus {
   color: var(--blue-text);
   outline: none;
-  fill: var(--blue-text);
+
   transition: transform var(--timeing-function);
 }
 
@@ -223,7 +245,6 @@ svg path {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-
   margin-left: auto;
   margin-right: auto;
 }
@@ -290,6 +311,11 @@ button {
   color: var(--black-text);
   background-color: var(--button-bg-non-active);
   border-radius: 4px;
+
+  transition-property: zoom;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 250ms;
 }
 
 /* portfollio */
@@ -299,8 +325,14 @@ button {
   background-color: var(--button-bg-active);
   outline: none;
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
-  transition: transform var(--timeing-function);
+  transform: scale(0.9);
+  cursor: pointer;
 }
+
+.button:active {
+  transform: translateY(-1px);
+}
+
 
 /* portfollio */
 .main-container {
@@ -363,7 +395,7 @@ button {
   overflow: hidden;
 }
 
-.overlay-container:hover .overlay,
+.card:hover .overlay,
 .overlay-container:focus .overlay {
   transform: translateY(-100%);
   transition: transform var(--timeing-function);
@@ -402,11 +434,10 @@ button {
 }
 
 .card:hover,
-.overlay-container :focus .card {
+.card :focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
   cursor: pointer;
   outline: none;
-  transition: transform var(--timeing-function);
 }
 
 .title {
@@ -433,15 +464,105 @@ button {
   font-weight: bold;
   font-size: 16px;
   line-height: 30px;
+  outline: none;
   border: none;
-
-  /* identical to box height, or 187% */
   text-align: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   letter-spacing: 0.06em;
   background-color: var(--blue-text);
   padding: 10px 32px;
+
+  transition-property: zoom;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 250ms;
+}
+
+.btn:hover,
+.btn:focus,
+.modal-button:hover,
+.modal-button:focus {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.btn:active {
+  transform: translateY(-1px);
+}
+
+.backdrop {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: opacity var(--timeing-function);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 528px;
+  height: 581px;
+  background: var(--white-text);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+
+  transition: transform var(--timeing-function);
+  animation-delay: 250ms;
+
+
+}
+
+.modal-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--white-text);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+svg.button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  background-size: contain;
+  width: 18px;
+  height: 18px;
+  fill: var(--black-logo);
+}
+
+.button-svg {
+  display: flex;
+  width: 18px;
+  height: 18px;
 }
 
 /* portfollio */
@@ -665,9 +786,7 @@ button {
   line-height: 16px;
   text-align: center;
   letter-spacing: 0.03em;
-  text-transform: uppercase;
-
-color: #FFFFFF;
+  color: #FFFFFF;
 }
 
 .team {
@@ -755,13 +874,14 @@ color: #FFFFFF;
   justify-items: center;
   padding: 0;
   list-style: none;
+  transform: var(--timeing-function);
 }
 
 .company:hover {
   border: 1px solid currentColor;
   color: var(--button-bg-active);
-  fill: var(--button-bg-active);4
-  transition: transform var(--timeing-function);
+  fill: var(--button-bg-active);
+  transform: var(--timeing-function);
 }
 
 .company-link:focus {
@@ -769,7 +889,6 @@ color: #FFFFFF;
   border-radius: 4px;
   color: var(--button-bg-active);
   border: 1px solid currentColor;
-  transition: transform var(--timeing-function);
 }
 
 .company {
@@ -781,6 +900,7 @@ color: #FFFFFF;
   border-radius: 4px;
   justify-content: center;
   align-items: center;
+  
 }
 
 .company-link {
@@ -790,6 +910,7 @@ color: #FFFFFF;
   align-items: center;
   justify-content: center;
   align-content: center;
+  transform: scale(1) var(--timeing-function);
 }
 
 .company-logo {
@@ -884,6 +1005,8 @@ color: #FFFFFF;
   background-size: contain;
   list-style: none;
   padding: 0px;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
 }
 
 li.social-media {
@@ -901,6 +1024,8 @@ li.social-media {
   height: 100%;
   border-radius: 50px;
   background-color: rgba(255, 255, 255, 0.1);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
 }
 
 .social-media-item {
@@ -925,7 +1050,9 @@ li.social-media {
   background-color: var(--button-bg-active);
   border: 0;
   outline: none;
-  transition: transform var(--timeing-function);
+  transition-timing-function: var(--timeing-function);
+  transition-duration: 250ms;
+  opacity: 0.7;
 }
 
 .social-media-link:hover,
@@ -933,65 +1060,6 @@ li.social-media {
   color: var(--white-text);
   fill: var(--white-text);
   background-color: var(--button-bg-active);
-  transition: transform var(--timeing-function);
+  transition-duration: 250ms;
+  opacity: 0.7;
 }
-
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.backdrop.is-hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.modal {
-  position: absolute;
-  top: 221px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 528px;
-  height: 581px;
-  background: var(--white-text);
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-}
-
-.modal-button {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  background-size: contain;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: var(--white-text);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  margin: 0;
-  padding: 0;
-}
-
-svg.button-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  background-size: contain;
-  width: 18px;
-  height: 18px;
-  fill: var(--black-logo);
-}
-
-.button-svg {
-  display: flex;
-  width: 18px;
-  height: 18px;
