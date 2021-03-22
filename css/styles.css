@@ -1068,6 +1068,22 @@ li.social-media {
   color: var(--white-text);
   fill: var(--white-text);
   background-color: var(--button-bg-active);
-  /* transition-duration: 250ms;
-  opacity: 0.7; */
+  /* opacity: 0.7; */
+
+  /* animation-name: changeBgColor;
+  animation-duration: 2500ms;
+  animation-timing-function: var(--timing-function);
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards; */
 }
+
+/* @keyframes changeBgColor {
+  0% {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  100% {
+    background-color: var(--button-bg-active);
+  }
+} */
