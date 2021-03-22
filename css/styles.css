@@ -187,9 +187,10 @@ svg path {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  /* transition-property: delay; */
+
+  transition-property: color;
   transition-duration: 250ms;
-  transition-timing-function: var(--timing-function) 250ms;
+  transition-timing-function: var(--timing-function);
 }
 
 .mail:focus,
@@ -398,7 +399,6 @@ button {
 .card:hover .overlay,
 .overlay-container:focus .overlay {
   transform: translateY(-100%);
-  transition: transform var(--timing-function);
 }
 
 .overlay-container:focus {
@@ -473,10 +473,9 @@ button {
   background-color: var(--blue-text);
   padding: 10px 32px;
 
-  transition-property: zoom;
+  transition-property: transform;
   transition-duration: 250ms;
   transition-timing-function: var(--timing-function);
-  transition-delay: 250ms;
 }
 
 .btn:hover,
@@ -499,7 +498,10 @@ button {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
   opacity: 1;
-  transition: opacity var(--timing-function);
+  
+  transition-property: transform, opacity;
+  transition-duration: 250ms;
+  transition-timing-function: var(--timing-function);
 }
 
 .backdrop.is-hidden {
@@ -518,15 +520,12 @@ button {
   transform: translate(-50%, -50%) scale(1);
   width: 528px;
   height: 581px;
-  background: var(--white-text);
+  background-color: var(--white-text);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 
 
-  transition: transform var(--timing-function);
-  animation-delay: 250ms;
-
-
+  transition: transform var(--timing-function), background-color 250ms var(--timing-function);
 }
 
 .modal-button {
@@ -1012,7 +1011,7 @@ svg.button-icon {
   transition: opacity 250ms var(--timing-function);
   opacity: 1;
 
-  transition-property: color;
+  transition-property: color, opacity;
   transition-duration: 250ms;
   transition-timing-function: var(--timing-function);
 }
